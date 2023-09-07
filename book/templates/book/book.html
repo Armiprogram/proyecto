@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+ {%block title %}Reservacion{%endblock%} 
+ {% load static %}
+ {%block content %} 
+ <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Compartenos los detalles de tu reservación en la seccion de mensaje por favor
+        </h2>
+      </div>
+      <!--  {% if 'ok' in request.GET %}
+      <p><b>Su reservación se ha enviado correctamente, en breve le confirmaremos </b></p>
+      {% endif %}
+      <form action="" method="POST">
+        {% csrf_token %} 
+      <table>
+      {{bookForm.as_table}}
+      </table>
+      <input type="submit" value="Enviar"/>
+            </form>
+            {{request.POST}}
+          -->
+        <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            {% if 'ok' in request.GET %}
+      <p><b>Su reservación se ha enviado correctamente, en breve le confirmaremos </b></p>
+            {% elif 'ok' in request.GET %}
+            <p><b>Ha ocurrido un error intente mas tarde </b></p>
+            {% endif %}
+            <form action="" method="POST">
+              {% csrf_token %} 
+              <div>
+                <label>Nombre</label>
+                {{bookForm.name}}
+              </div>
+              <div>
+                {{bookForm.name.errors}}
+              </div>
+              <div>
+                <label>Correo</label>
+                {{bookForm.email}}
+              </div>
+              <div>
+                {{bookForm.email.errors}}
+              </div>
+              <div>
+                <label>Mensaje</label>
+                {{bookForm.message}}
+              </div>
+              <div>
+                {{bookForm.message.errors}}
+              </div>
+               
+              <div class="container">
+                <input type="submit" class="container" value="Enviar"/>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+      
+      </div>
+    </div>
+  </section>
+  
+ {%endblock%}

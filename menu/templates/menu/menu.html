@@ -1,0 +1,79 @@
+{% extends 'core/base.html' %}
+ {%block title %}Menu{%endblock%} 
+ {% load static %}
+ {%block content %} 
+
+ <section class="offer_section layout_padding-bottom">
+    <div class="offer_container">
+      <div class="container ">
+        <div class="row">
+          <div class="col-md-6  ">
+            <div class="box ">
+              <div class="img-box">
+                <img src="{%static 'core/images/o1.jpg'%}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Jueves de delicia
+                </h5>
+                <h6>
+                  <span>20%</span> Off
+                </h6>
+              
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6  ">
+            <div class="box ">
+              <div class="img-box">
+                <img src="{%static 'core/images/o2.jpg'%}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                 Martes de pizza
+                </h5>
+                <h6>
+                  <span>15%</span> Off
+                </h6>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end offer section -->
+  <div class="heading_container heading_center">
+    <h2>
+      Nuestro Menu
+    </h2>
+  </div>
+  <!-- food section -->
+  {% for menu in listMenus %}
+  <section class="food_section layout_padding-bottom">
+    <div class="container">
+      <div class="filters-content">
+        <div class="row grid">
+          <div class="col-md-12 all pizza">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="{{menu.image.url}}" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                  {{menu.tittle}}
+                  </h5>
+                  <p>
+                    {{menu.content}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+  </section>
+  {% endfor %}
+ {%endblock%}

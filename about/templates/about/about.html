@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+ {%block title %}Informacion{%endblock%} 
+ {% load static %}
+ {%block content %} 
+ {% for about in listAbout %}
+ <section class="about_section layout_padding">
+    <div class="container  ">
+
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="{{about.image.url}}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                {{about.published|date:"SHORT_DATE_FORMAT"}}
+              </h2>
+              <h2>
+               {{about.title}}
+              </h2>
+            </div>
+            <p>
+              {{about.content}}
+            </p>
+            <span>
+
+              Publicado por :  <em><b>{{about.author}} </b></em> en
+              {% for category in about.categories.all %}
+              <em><a href="{% url 'category' category.id%}" class="link">{{category.name}} {% if not froloop.last %}.{% endif %}</a> </em>
+              {% endfor %}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {%endfor%}
+  {%endblock%}
